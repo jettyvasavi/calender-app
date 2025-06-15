@@ -41,6 +41,10 @@ const Calendar = () => {
       const dateString = currentDate.date(d).format('YYYY-MM-DD');
       const dayEvents = events.filter(event => event.date === dateString);
 
+      const hasConflict = dayEvents.some((event, idx, arr) =>
+        arr.filter(e => e.time === event.time).length > 1
+      );
+
       calendarDays.push(
         <div
           key={d}
@@ -67,6 +71,13 @@ const Calendar = () => {
               </span>
             </div>
           ))}
+
+          {/* Display conflict message if any */}
+          {hasConflict && (
+            <div className="conflict-msg">
+              ⚠️ Conflicts present
+            </div>
+          )}
         </div>
       );
     }
@@ -120,7 +131,7 @@ const Calendar = () => {
         <button type="submit" aria-label="Add event">Add Event</button>
       </form>
 
-      
+      {/* Calendar */}
       <section className="calendar-container" aria-label="Calendar view">
         <header className="header">
           <button
@@ -130,7 +141,6 @@ const Calendar = () => {
             aria-label="Previous month"
             title="Previous month"
           >
-           
             &#x276E;
           </button>
           <h2 aria-live="polite">{currentDate.format('MMMM YYYY')}</h2>
@@ -158,6 +168,7 @@ const Calendar = () => {
 };
 
 export default Calendar;
+
 
 
 

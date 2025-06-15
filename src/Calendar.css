@@ -248,6 +248,16 @@
   scrollbar-width: thin;
   scrollbar-color: #a5b4fc #f3f4f6;
 }
+.conflict-msg {
+  margin-top: 8px;
+  padding: 6px 8px;
+  background: #ffeaa7;
+  color: #8e4b10;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
 
 
 
